@@ -1,0 +1,70 @@
+#! python3
+#Rock Paper Scissor Game
+import random
+import time
+choices = ('rock', 'paper', 'scissor')
+playerChoice = ''
+compChoice = ''
+
+def welcome():
+    print('Welcome to Rock, Paper, Scissors!\n')
+    time.sleep(1)
+    print('Rock Beats Scissor.')
+    print('Paper Beats Rock.')
+    print('Scissors Beats Paper.\n')
+    time.sleep(1)
+
+welcome()
+
+def game():
+    playerScore = 0
+    compScore = 0
+    while ((playerScore < 5) and (compScore < 5)):
+        playerChoice = input('Type Rock, Paper, or Scissors to make selection: ')
+        playerChoice = playerChoice.lower()
+        compChoice = random.choice(choices)
+        print('Player :', playerChoice, '         Computer :', compChoice)
+        if playerChoice == 'rock' and compChoice == 'scissor':
+            print('Player Wins')
+            playerScore += 1
+        elif playerChoice == 'paper' and compChoice == 'rock':
+            print('Player Wins')
+            playerScore += 1
+        elif playerChoice == 'scissor' and compChoice == 'paper':
+            print('Player Wins')
+            playerScore += 1
+        elif compChoice == 'rock' and playerChoice == 'scissor':
+            print('Computer Wins')
+            compScore += 1
+        elif compChoice == 'paper' and playerChoice == 'rock':
+            print('Computer Wins')
+            compScore += 1
+        elif compChoice == 'scissor' and playerChoice == 'paper':
+            print('Computer Wins')
+            compScore += 1
+        elif playerChoice == 'paper' and compChoice == 'paper':
+            print('Tie')
+        elif playerChoice == 'rock' and compChoice == 'rock':
+            print('Tie')
+        elif playerChoice == 'scissor' and compChoice == 'scissor':
+            print('Tie')
+        elif playerChoice not in choices:
+            print('Invalid Input.')
+        print('Player Score: ', playerScore, '      Computer Score: ', compScore)
+        print('\n')
+ 
+        if playerScore == 5:
+            print('Player Wins The Game.')
+        elif compScore == 5:
+            print('Computer Wins The Game.')
+
+game()
+
+while True:
+    playAgain = input('Want to play again? Type yes to play again, or anything else to exit. ')
+    playAgain = playAgain.lower()
+    if playAgain == 'yes':
+        game()
+    else:
+        print('Thanks for playing!')
+        break
